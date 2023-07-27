@@ -139,7 +139,7 @@ class HomeController extends Controller
     {
         $shore = Shore::findOrFail($id);
         $shore->delete();
-        
-        return redirect()->route('admin.index')->with('deleted');
+
+        return redirect()->route('admin.index')->with('deleted', $shore->name);
     }
 }

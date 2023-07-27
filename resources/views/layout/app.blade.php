@@ -12,6 +12,8 @@
         @yield('main-section')
     </main>
     @include('partials.footer')
+
+    @yield('customScript')
     @vite('resources/js/app.js')
 </body>
 </html>

@@ -17,3 +17,55 @@ main{
     margin: 2rem 0;
     flex-grow: 1;
 }
+
+div.container-modal {
+    height: 100vh;
+    width: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 3;
+
+    div.modale {
+        width: 400px;
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+        border-radius: 1rem;
+        z-index: 3;
+        overflow: hidden;
+
+        div.header {
+            background-color: rgb(84, 84, 84);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.55rem 1rem;
+        }
+
+        div.button {
+            background-image: url(https://media.tenor.com/5gL5pPo-0W0AAAAC/sunset-fire.gif);
+            background-size: cover;
+            background-position: center;
+
+            button {
+                padding: 0.1rem 1rem;
+                font-size: 1.3rem;
+            }
+        }
+    }
+}
+
+div.container-modal.active {
+    display: flex;
+}
+
+.ivy_form{
+    background-color: rgb(33,37,41);
+    color: white;
+    padding: 2rem 1rem;
+    border-radius: 1rem;
+}

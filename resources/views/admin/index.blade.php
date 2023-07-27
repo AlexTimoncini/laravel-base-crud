@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <table class="table">
+                <table class="table table-dark">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -28,7 +28,11 @@
                             <td>
                                 <a class="btn btn-primary" href="{{ route('admin.show', $shore->id) }}">View</a>
                                 <a href="{{ route('admin.edit', $shore->id) }}" class="btn btn-warning">Edit</a>
-                                <button class="btn btn-danger">Delete</button>
+                                <form class="d-inline-block " action="{{ route('admin.destroy', $shore->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
                             </td>
                         </tr>
                         @endforeach

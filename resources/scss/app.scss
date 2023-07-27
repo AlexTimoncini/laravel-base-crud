@@ -1,1 +1,19 @@
 @import '~bootstrap/scss/bootstrap';
+
+.ivy_logo{
+    height: 50px;
+    aspect-ratio: 1/1;
+}
+
+body{
+    background-color: rgb(62, 62, 62);
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+main{
+    margin: 2rem 0;
+    flex-grow: 1;
+}

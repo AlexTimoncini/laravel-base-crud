@@ -111,7 +111,7 @@ class HomeController extends Controller
         } else {
             $request['has_soccer_field'] = false;
         };
-        
+
         $data = $request->validate([
             'name' => ['required', 'min:3', 'unique:shores'],
             'location' => ['required', 'min:5'],
@@ -137,6 +137,9 @@ class HomeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $shore = Shore::findOrFail($id);
+        $shore->delete();
+        
+        return redirect()->route('admin.index')->with('deleted');
     }
 }

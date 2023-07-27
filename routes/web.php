@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index'])->name('admin.index');
+Route::get('/admin/create', [HomeController::class, 'create'])->name('admin.create');
+Route::post('/admin', [HomeController::class, 'store'])->name('admin.store');
+Route::put('/admin/{id}', [HomeController::class, 'update'])->name('admin.update');
+Route::get('/admin/{id}/edit', [HomeController::class, 'edit'])->name('admin.edit');
+Route::get('/admin/{id}', [HomeController::class, 'show'])->name('admin.show');

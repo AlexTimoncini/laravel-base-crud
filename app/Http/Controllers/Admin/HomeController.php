@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Shore;
+use Illuminate\Validation\Rule;
 
 class HomeController extends Controller
 {
@@ -15,7 +16,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $shores = Shore::all();
+        $shores = Shore::Paginate(10);
 
         return view('admin.index', compact('shores'));
     }
@@ -59,12 +60,15 @@ class HomeController extends Controller
             'closing_date' => ['required', 'date_format:Y-m-d'],
             'has_volley_field' => ['boolean'],
             'has_soccer_field' => ['boolean'],
+        ],
+        [
+            'daily_price.decimal' => 'The price must be in € format (9.99).',
         ]);
-        $newShore = new Shore();
-        $newShore->fill($data);
-        $newShore->save();
+        $shore = new Shore();
+        $shore->fill($data);
+        $shore->save();
 
-        return redirect()->route('admin.show', $newShore->id); 
+        return redirect()->route('admin.show', $shore->id)->with('created', $shore->name); 
     }
 
     /**
@@ -113,7 +117,7 @@ class HomeController extends Controller
         };
 
         $data = $request->validate([
-            'name' => ['required', 'min:3', 'unique:shores'],
+            'name' => ['required', 'min:3', Rule::unique('shores')->ignore($id)],
             'location' => ['required', 'min:5'],
             'beach_umbrella' => ['required', 'integer'],
             'beach_bed' => ['required', 'integer'],
@@ -122,7 +126,10 @@ class HomeController extends Controller
             'closing_date' => ['required', 'date_format:Y-m-d'],
             'has_volley_field' => ['boolean'],
             'has_soccer_field' => ['boolean'],
-        ]);
+            ],
+            [
+                'daily_price.decimal' => 'The price must be in € format (9.99).',
+            ]);
         $newShore = Shore::findOrFail($id);
         $newShore->update($data);
 
@@ -141,5 +148,18 @@ class HomeController extends Controller
         $shore->delete();
 
         return redirect()->route('admin.index')->with('deleted', $shore->name);
+    }
+
+    public function trashed()
+    {
+        $shores = Shore::onlyTrashed()->get();
+        return view('admin.trashed', compact('shores'));
+    }
+
+    public function restore($id)
+    {
+        $shore = Shore::withTrashed()->findOrFail($id);
+        $shore->restore();
+        return redirect()->route('admin.index')->with('restored', $shore->name);
     }
 }

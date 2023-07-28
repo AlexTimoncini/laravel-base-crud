@@ -16,7 +16,7 @@
             <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
                 ><i class="fab fa-linkedin-in"></i
             ></a>
-            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+            <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/AlexTimoncini/laravel-base-crud.git" role="button"
                 ><i class="fab fa-github"></i
             ></a>
         </section>

@@ -16,31 +16,31 @@
                 @csrf
                 <div class="form-group m-2">
                     <label for="shoreName">Company Name</label>
-                    <input type="text" class="form-control" id="shoreName" placeholder="Enter the name of your company" name="name">
+                    <input type="text" class="form-control" id="shoreName" placeholder="Enter the name of your company" name="name" value="{{ old('name') }}">
                 </div>
                 <div class="form-group m-2">
                     <label for="shoreLocation">Location</label>
-                    <input type="text" class="form-control" id="shoreLocation" name="location" placeholder="Enter the location of your company">
+                    <input type="text" class="form-control" id="shoreLocation" name="location" placeholder="Enter the location of your company" value="{{ old('location') }}">
                 </div>
                 <div class="form-group m-2">
                     <label for="shoreUmbrella">Number of Beach Umbrellas</label>
-                    <input type="number" class="form-control" id="shoreUmbrella" name="beach_umbrella" placeholder="Enter the numbre of your beach umbrellas">
+                    <input type="number" class="form-control" id="shoreUmbrella" name="beach_umbrella" placeholder="Enter the numbre of your beach umbrellas" value="{{ old('beach_umbrella') }}">
                 </div>
                 <div class="form-group m-2">
                     <label for="shoreBeds">Number of Beach Beds</label>
-                    <input type="number" class="form-control" id="shoreBeds" name="beach_bed" placeholder="Enter the numbre of your beach beds">
+                    <input type="number" class="form-control" id="shoreBeds" name="beach_bed" placeholder="Enter the numbre of your beach beds" value="{{ old('beach_bed') }}">
                 </div>
                 <div class="form-group m-2">
                     <label for="shorePrice">Daily Price</label>
-                    <input type="text" class="form-control" id="shorePrice" name="daily_price" placeholder="Enter the daily price">
+                    <input type="text" class="form-control" id="shorePrice" name="daily_price" placeholder="Enter the daily price" value="{{ old('daily_price') }}">
                 </div>
                 <div class="form-group m-2">
                     <label for="shoreOpening">Opening Date</label>
-                    <input type="text" class="form-control" id="shoreOpening" name="opening_date" placeholder="Enter the opening date">
+                    <input type="text" class="form-control" id="shoreOpening" name="opening_date" placeholder="Enter the opening date" value="{{ old('opening_date') }}">
                 </div>
                 <div class="form-group m-2">
                     <label for="shoreClosing">Closing Date</label>
-                    <input type="text" class="form-control" id="shoreClosing" name="closing_date" placeholder="Enter the closing date">
+                    <input type="text" class="form-control" id="shoreClosing" name="closing_date" placeholder="Enter the closing date" value="{{ old('closing_date') }}">
                 </div>
                 <div class="form-group m-2">
                     <label class="me-2" for="shoreVolley">Do you have a volleyball field?</label>

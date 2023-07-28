@@ -14,12 +14,20 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function home()
+    {
+        
+
+        return view('admin.home');
+    }
+
     public function index()
     {
         $shores = Shore::Paginate(10);
 
         return view('admin.index', compact('shores'));
     }
+
 
     /**
      * Show the form for creating a new resource.

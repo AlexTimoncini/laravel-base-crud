@@ -3,5 +3,6 @@
 @section('title', 'Home')
 
 @section('main-section')
-Hello
+Hello 
+hello pt2
 @endsection

@@ -14,7 +14,8 @@ use App\Http\Controllers\Admin\HomeController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index'])->name('admin.index');
+Route::get('/', [HomeController::class, 'home'])->name('admin.home');
+Route::get('/admin/index', [HomeController::class, 'index'])->name('admin.index');
 Route::get('/admin/create', [HomeController::class, 'create'])->name('admin.create');
 Route::post('/admin', [HomeController::class, 'store'])->name('admin.store');
 Route::get('/admin/trashed', [HomeController::class, 'trashed'])->name('admin.trashed');

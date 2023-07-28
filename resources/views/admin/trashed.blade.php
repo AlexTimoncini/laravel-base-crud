@@ -14,7 +14,7 @@
             </div>
         </div>
     </div>
-    <div class="container">
+    <div class="container py-5">
         <div class="row">
             <div class="col-12">
                 @if(session('deleted'))

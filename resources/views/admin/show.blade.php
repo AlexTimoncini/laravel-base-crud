@@ -3,7 +3,7 @@
 @section('title', 'Home')
 
 @section('main-section')
-    <div class="container">
+    <div class="container py-5">
         <div class="row">
             <div class="col-8 m-auto">
                 @if(session('created'))
@@ -12,7 +12,7 @@
                 </div>
                 @endif
                 <div class="card bg-dark text-white">
-                    <img class="card-img-top" src="{{ $shore->thumb }}" alt="{{ $shore->name }}">
+                    <img class="card-img-top card-show" src="{{ $shore->thumb }}" alt="{{ $shore->name }}">
                     <h5 class="card-header border-white py-2 px-4 fs-3">{{ $shore->name }}</h5>
                     <div class="card-body px-4 fs-4">
                         <div class="d-flex justify-content-between">

@@ -3,7 +3,7 @@
 @section('title', 'Home')
 
 @section('main-section')
-    <div class="container-modal" id="delete_modal">
+    <div class="container-modal " id="delete_modal">
         <div class="modale">
             <div class="header">
                 <h1 class="fw-semibold fs-4 m-0 text-white"> Are you sure to delete this shore? </h1>
@@ -14,7 +14,7 @@
             </div>
         </div>
     </div>
-    <div class="container">
+    <div class="container py-5">
         <div class="row">
             <div class="col-12">
                 @if(session('deleted'))

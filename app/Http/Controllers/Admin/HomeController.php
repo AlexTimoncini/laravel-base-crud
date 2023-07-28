@@ -16,7 +16,7 @@ class HomeController extends Controller
      */
     public function home()
     {
-        
+
 
         return view('admin.home');
     }
@@ -47,36 +47,40 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        if($request->has('has_volley_field')){
+        if ($request->has('has_volley_field')) {
             $request['has_volley_field'] = true;
         } else {
             $request['has_volley_field'] = false;
-        };
+        }
+        ;
 
-        if($request->has('has_soccer_field')){
+        if ($request->has('has_soccer_field')) {
             $request['has_soccer_field'] = true;
         } else {
             $request['has_soccer_field'] = false;
-        };
-        $data = $request->validate([
-            'name' => ['required', 'min:3', 'unique:shores'],
-            'location' => ['required', 'min:5'],
-            'beach_umbrella' => ['required', 'integer'],
-            'beach_bed' => ['required', 'integer'],
-            'daily_price' => ['required', 'decimal:2,4'],
-            'opening_date' => ['required', 'date_format:Y-m-d'],
-            'closing_date' => ['required', 'date_format:Y-m-d'],
-            'has_volley_field' => ['boolean'],
-            'has_soccer_field' => ['boolean'],
-        ],
-        [
-            'daily_price.decimal' => 'The price must be in € format (9.99).',
-        ]);
+        }
+        ;
+        $data = $request->validate(
+            [
+                'name' => ['required', 'min:3', 'unique:shores'],
+                'location' => ['required', 'min:5'],
+                'beach_umbrella' => ['required', 'integer'],
+                'beach_bed' => ['required', 'integer'],
+                'daily_price' => ['required', 'decimal:2,4'],
+                'opening_date' => ['required', 'date_format:Y-m-d'],
+                'closing_date' => ['required', 'date_format:Y-m-d'],
+                'has_volley_field' => ['boolean'],
+                'has_soccer_field' => ['boolean'],
+            ],
+            [
+                'daily_price.decimal' => 'The price must be in € format (9.99).',
+            ]
+        );
         $shore = new Shore();
         $shore->fill($data);
         $shore->save();
 
-        return redirect()->route('admin.show', $shore->id)->with('created', $shore->name); 
+        return redirect()->route('admin.show', $shore->id)->with('created', $shore->name);
     }
 
     /**
@@ -112,36 +116,40 @@ class HomeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if($request->has('has_volley_field')){
+        if ($request->has('has_volley_field')) {
             $request['has_volley_field'] = true;
         } else {
             $request['has_volley_field'] = false;
-        };
+        }
+        ;
 
-        if($request->has('has_soccer_field')){
+        if ($request->has('has_soccer_field')) {
             $request['has_soccer_field'] = true;
         } else {
             $request['has_soccer_field'] = false;
-        };
+        }
+        ;
 
-        $data = $request->validate([
-            'name' => ['required', 'min:3', Rule::unique('shores')->ignore($id)],
-            'location' => ['required', 'min:5'],
-            'beach_umbrella' => ['required', 'integer'],
-            'beach_bed' => ['required', 'integer'],
-            'daily_price' => ['required', 'decimal:2,4'],
-            'opening_date' => ['required', 'date_format:Y-m-d'],
-            'closing_date' => ['required', 'date_format:Y-m-d'],
-            'has_volley_field' => ['boolean'],
-            'has_soccer_field' => ['boolean'],
+        $data = $request->validate(
+            [
+                'name' => ['required', 'min:3', Rule::unique('shores')->ignore($id)],
+                'location' => ['required', 'min:5'],
+                'beach_umbrella' => ['required', 'integer'],
+                'beach_bed' => ['required', 'integer'],
+                'daily_price' => ['required', 'decimal:2,4'],
+                'opening_date' => ['required', 'date_format:Y-m-d'],
+                'closing_date' => ['required', 'date_format:Y-m-d'],
+                'has_volley_field' => ['boolean'],
+                'has_soccer_field' => ['boolean'],
             ],
             [
                 'daily_price.decimal' => 'The price must be in € format (9.99).',
-            ]);
+            ]
+        );
         $newShore = Shore::findOrFail($id);
         $newShore->update($data);
 
-        return redirect()->route('admin.show', $newShore->id); 
+        return redirect()->route('admin.show', $newShore->id);
     }
 
     /**
